@@ -151,21 +151,31 @@ def new_fasta_generator(vcf, reference_seq):
 									#print line_info[1]
 									#print 'N'
 
-		for pos in pos_dict:
-			full_seq_list = list(full_seq)
-			full_seq_list[int(pos)] = pos_dict[pos]
-		full_seq_mod = ''.join(full_seq_list)
+		i=0
+		resu=[]
+		while i < len(full_seq):
+			if pos_dict.has_key(str(i+1)):
+				resu.append(pos_dict[str(i+1)])
+				print i+1,' ',pos_dict[str(i+1)]
+			else:
+				resu.append(full_seq[i])
+			i+=1
+		resu = ''.join(resu)
+		#or pos in pos_dict:
+			#full_seq_list = list(full_seq)
+			#full_seq_list[int(pos)] = pos_dict[pos]
+		#ull_seq_mod = ''.join(full_seq_list)
 
 		#write the full modified sequence to the fasta file	
 		i = 0
-		while i < len(full_seq_mod):
-			vcf_fasta.write(full_seq_mod[i:i+line_length] + '\n')
+		while i < len(resu):
+			vcf_fasta.write(resu[i:i+line_length] + '\n')
 			i = i +line_length
 
 
 		
 
-new_fasta_generator(files[0],reference[0])		
+#new_fasta_generator(files[0],reference[0])		
 
 
 for file in files:
