@@ -1,4 +1,5 @@
-#This script take in vcf files in a folder and create consensus fasta file from a reference sequence.
+#This script take in vcf files in a folder and create consensus fasta file from a reference sequence. The VCF files this is designed for show all positions and shows 
+#reference - alternative and not two haplotypes.
 
 import sys, os, subprocess, glob, linecache
 
@@ -77,7 +78,7 @@ def new_fasta_generator(vcf, reference_seq):
 	line_ex= linecache.getline(reference_seq,2) # determine fasta line length of reference to match for the output
 	line_ex_stripped = line_ex.strip()
 	line_length = len(line_ex_stripped)
-
+ 
 	vcf_file = open(vcf)
 	vcf_file_name_split = vcf.split('.')
 	vcf_file_name_1 = '.'.join(vcf_file_name_split[:-1]) + '.fa'
@@ -165,6 +166,8 @@ def new_fasta_generator(vcf, reference_seq):
 			#full_seq_list = list(full_seq)
 			#full_seq_list[int(pos)] = pos_dict[pos]
 		#ull_seq_mod = ''.join(full_seq_list)
+
+
 
 		#write the full modified sequence to the fasta file	
 		i = 0
