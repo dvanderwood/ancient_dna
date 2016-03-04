@@ -48,7 +48,6 @@ def new_fasta_generator(vcf, reference_seq):
 			if '#CHROM' in line:
 				for line in vcf_file:
 					line_info = line.split()
-					print line_info[9]
 					rand_int = random.randint(1,2)
 					if line_info[9] == '1|1' or (line_info[9] == '1|0' and rand_int == 1) or (line_info[9] == '0|1' and rand_int == 1):
 						if line_info[1] not in pos_dict: #never repeat a position
@@ -114,10 +113,8 @@ def new_fasta_generator(vcf, reference_seq):
 				resu.append(full_seq[i])
 			i+=1
 		resu = ''.join(resu)
-		#or pos in pos_dict:
-			#full_seq_list = list(full_seq)
-			#full_seq_list[int(pos)] = pos_dict[pos]
-		#ull_seq_mod = ''.join(full_seq_list)
+		
+
 
 
 
@@ -130,8 +127,19 @@ def new_fasta_generator(vcf, reference_seq):
 
 		
 
-new_fasta_generator(files[0],reference[0])		
+#new_fasta_generator(files[0],reference[0])		
 
 
 #for file in files:
 #	new_fasta_generator(file,reference[0])
+
+
+k = 0
+while k < 25:
+	new_fasta_generator(files[k],reference[0])
+	k += 1
+
+
+
+
+
