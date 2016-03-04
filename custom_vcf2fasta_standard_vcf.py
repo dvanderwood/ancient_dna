@@ -130,14 +130,14 @@ def new_fasta_generator(vcf, reference_seq):
 #new_fasta_generator(files[0],reference[0])		
 
 
-#for file in files:
-#	new_fasta_generator(file,reference[0])
+for file in files:
+	new_fasta_generator(file,reference[0])
 
 
-k = 0
-while k < 25:
-	new_fasta_generator(files[k],reference[0])
-	k += 1
+#k = 0
+#while k < 100:
+#	new_fasta_generator(files[k],reference[0])
+#	k += 1
 
 
 
