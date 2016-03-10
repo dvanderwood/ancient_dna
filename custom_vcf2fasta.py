@@ -7,7 +7,7 @@ import sys, os, subprocess, glob, linecache
 usage: custom_vcf2fasta.py
 '''
 
-#reference fasta should also be in the folder
+#reference fasta should also be in the folder and have the file type .fa
 #Should be run in the directory containing the vcfs to be used
 
 files = glob.glob("*.vcf")
@@ -15,7 +15,7 @@ files = glob.glob("*.vcf")
 print 'Working with these files:'
 print files
 
-reference = glob.glob("*.fa" or "*.fasta")
+reference = glob.glob("*.fa")
 print 'Working with this reference'
 print reference[0]
 
@@ -106,7 +106,7 @@ def new_fasta_generator(vcf, reference_seq):
 								pos_dict[line_info[1]] = line_info[4]
 								#print line_info[1]
 								#print line_info[4]
-							elif ',' in line_info[4]:
+							elif ',' in line_info[4] and len(line_info[4] == 3: #What if there is structural variant???*******************, just add: and len(line_info[4] == 3) ???
 								if 'a'  in line_info[4].lower() and 'g' in line_info[4].lower():
 									pos_dict[line_info[1]] = 'R'
 									#print line_info[1]
@@ -175,6 +175,16 @@ def new_fasta_generator(vcf, reference_seq):
 			vcf_fasta.write(resu[i:i+line_length] + '\n')
 			i = i +line_length
 
+
+	###*************CHECK IF WORKING******************###
+	#Create a file of every position and its variant that passed filtering
+	pos_dict_name_1 = '.'.join(vcf_file_name_split[:-1]) + '.txt'
+	pos_dict_name = 'output/' + pos_dict_name_1
+	with open(pos_dict_name, 'w') as pos_file:
+		pos_file.write('position variant\n')
+		for key in pos_dict:
+			pos_line = key + ' ' + pos_dict[key] + '\n'
+			pos_file.write(pos_line)
 
 		
 

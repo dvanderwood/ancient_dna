@@ -3,11 +3,11 @@
 import sys, os, subprocess, glob, linecache
 
 '''
-usage: custom_vcf2fasta_checker.py
+usage: custom_vcf2fasta_phylip.py
 '''
 
 
-files = glob.glob('*.fa' or '*.fasta')
+files = glob.glob('*.fa')
 
 phylip_header1 = str(len(files))
 

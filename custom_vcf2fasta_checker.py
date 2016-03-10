@@ -1,4 +1,4 @@
-#This script take in concatanated fasta of the outputs of custom_vcf2fasta and checks to see if they are all the same length.
+#This script take in fasta of the outputs of custom_vcf2fasta and checks to see if they are all the same length.
 
 #File should be titiled all_*.fa
 
@@ -8,7 +8,7 @@ import sys, os, subprocess, glob, linecache
 usage: custom_vcf2fasta_checker.py
 '''
 
-files = glob.glob('*.fa' or '*.fasta')
+files = glob.glob('*.fa')
 
 fasta_dict = {}
 N_dict = {}
