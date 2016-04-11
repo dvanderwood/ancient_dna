@@ -14,6 +14,7 @@ phylip_header1 = str(len(files))
 seq_list = []
 id_list = []
 for file in files:
+	#phylip_id = file
 	phylip_id = linecache.getline(file,1)
 	phylip_id = phylip_id.split('.')
 	phylip_id = phylip_id[0]

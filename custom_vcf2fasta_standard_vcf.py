@@ -1,4 +1,4 @@
-#This script take in vcf files in a folder and create consensus fasta file from a reference sequence.
+#This script take in vcf files in a folder (like vcfs for 1000g individuals that were extracted via vcfutils) and creates consensus fasta file from a reference sequence.
 
 import sys, os, subprocess, glob, linecache, random
 
@@ -125,15 +125,15 @@ def new_fasta_generator(vcf, reference_seq):
 			i = i +line_length
 
 
-	###*************CHECK IF WORKING******************###
-	#Create a file of every position and its variant that passed filtering
-	pos_dict_name_1 = '.'.join(vcf_file_name_split[:-1]) + '.txt'
-	pos_dict_name = 'output/' + pos_dict_name_1
-	with open(pos_dict_name, 'w') as pos_file:
-		pos_file.write('position variant\n')
-		for key in pos_dict:
-			pos_line = key + ' ' + pos_dict[key] + '\n'
-			pos_file.write(pos_line)
+	####*************CHECK IF WORKING******************###
+	##Create a file of every position and its variant that passed filtering
+	#pos_dict_name_1 = '.'.join(vcf_file_name_split[:-1]) + '.txt'
+	#pos_dict_name = 'output/' + pos_dict_name_1
+	#with open(pos_dict_name, 'w') as pos_file:
+	#	pos_file.write('position variant\n')
+	#	for key in pos_dict:
+	#		pos_line = key + ' ' + pos_dict[key] + '\n'
+	#		pos_file.write(pos_line)
 
 		
 

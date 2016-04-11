@@ -1,6 +1,6 @@
-#This script take in fasta of the outputs of custom_vcf2fasta and checks to see if they are all the same length.
+#This script take in the fastas (he outputs of custom_vcf2fasta) and checks to see if they are all the same length, the N content, and the pairwise variations.
 
-#File should be titiled all_*.fa
+
 
 import sys, os, subprocess, glob, linecache
 
@@ -24,9 +24,17 @@ for file in files:
 		full_seq = ''.join(full_seq_lines)
 	fasta_dict[dict_key[1:]] = full_seq
 	N_dict[dict_key[1:]] = full_seq.count('N')
-	print dict_key
-	print len(full_seq)
-	print full_seq.count('N')
+	print dict_key[1:]
+	print 'length of sequence: ' + str(len(full_seq))
+	print 'number of Ns: ' + str(full_seq.count('N'))
+
+
+#Not Working!!!
+with open('n_content.txt', 'w') as output1:
+	output1.write('Sample	Sequence_Length	Number_of_Ns\n')
+	for key in N_dict:
+		output1_line = key + '	' + str(fasta_dict[key]) + '	' + str(N_dict[key]) + '\n'
+
 
 
 pairwise_dict = {}
@@ -60,11 +68,23 @@ for file in files:
 						z += 1
 					k += 1
 			j +=1
-		pairwise_dict_key = pairwise_dict_key1 + '+' + pairwise_dict_key2
+		pairwise_dict_key = pairwise_dict_key1[1:] + '+' + pairwise_dict_key2[1:]
 		pairwise_dict[pairwise_dict_key] = z
 		print pairwise_dict_key
 		print z
 		y += 1
 	i += 1
+
+with open('pairwise_variants.txt', 'w') as output2:
+	output2.write('Combintation	Number of Variants\n')
+	for key in pairwise_dict:
+		output2_line = key + '	' + str(pairwise_dict[key]) + '\n'
+		output2.write(output2_line)
+
+
+
+
+
+
 
 
