@@ -13,9 +13,6 @@ import sys, os
 
 path = sys.argv[1]
 
-if  path == '.':
-	path = os.getcwd()
-
 ############################################
 
 
@@ -24,7 +21,7 @@ if  path == '.':
 chain_id_order = []
 position_counter = 0
 ancient_position = 'unchanged'
-with open(path + '/homoplasy_order.txt', 'r') as genome_ordering:
+with open(path + '/homoplasy/homoplasy_order.txt', 'r') as genome_ordering:
 	for line in genome_ordering:
 		chain_id = line.strip('\n')
 		chain_id_order.append(chain_id)
@@ -44,7 +41,7 @@ print('\nAncient DNA located at chain position:', ancient_position)
 ###Determine number of informative sites####
 
 sample_seq = ''
-with open(path + '/short.fa', 'r') as informative_sites_file:
+with open(path + '/working/short.fa', 'r') as informative_sites_file:
 	for line in informative_sites_file:
 		if line[0] == '>':
 			pass
@@ -63,7 +60,7 @@ print('\nNumber of informative sites:', informative_sites)
 ###Determine 'full' genome size#############   For the test case this is the length of the used exomes for the specific chromosome
 
 all_seq = ''
-with open(path + '/all_genomes.fa', 'r') as all_sites_file:
+with open(path + '/working/all_genomes.fa', 'r') as all_sites_file:
 	for line in all_sites_file:
 		if line[0] == '>':
 			pass
@@ -89,7 +86,7 @@ TYPE = []
 singleton = []
 chain = []
 
-with open(path + '/homoplasy.txt', 'r') as homoplasy_info:
+with open(path + '/homoplasy/homoplasy.txt', 'r') as homoplasy_info:
 	next(homoplasy_info)
 	for line in homoplasy_info:
 		info = line.strip('\n').split('\t')
@@ -127,41 +124,12 @@ print('\nNumber of R sites in which the ancient DNA has a variant:', len(ancient
 
 ###Write output files#######################
 
-with open(path + '/homoplasy_stats.txt', 'w') as stats_file:
+with open(path + '/homoplasy/homoplasy_stats.txt', 'w') as stats_file:
 	stats_file.write('Ancient_R_Sites\tAncient_Polymorhpisms\tInformative_Sites\tTotal_Sites\n')
 	stats_file.write(str(len(ancient_recombs)) + '\t' + str(ancient_poplymorphisms_counter) + '\t' +str(informative_sites) + '\t' + str(all_sites) + '\n')
 
-with open(path + '/homoplasy_ancient_r_positions.txt', 'w') as position_file:
+with open(path + '/homoplasy/homoplasy_ancient_r_positions.txt', 'w') as position_file:
 	for pos in ancient_recombs:
 		position_file.write(str(position[pos]) + '\n')
 
 ############################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -66,7 +66,7 @@ def exome_extracter(file, pos_list):
 	exome_seq = ''.join(exome_seq)
 
 
-	file_split = file.split('.')
+	file_split = file.split('.' )
 	new_file = 'exomes/' + file_split[0] + '.' + file_split[1] + '.exomes.fa' 
 	new_filename = 'exomes/exomes_' + file
 	with open(new_filename, 'w') as new_fasta:

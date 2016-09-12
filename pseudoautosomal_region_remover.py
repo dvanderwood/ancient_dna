@@ -1,4 +1,4 @@
-#This script removes any exomes from a fasta file containing only exomes which fall in the pseudoautosomal region of the X chromosome.
+#This script removes any exomes from a fasta file (containing only exomes) which fall in the pseudoautosomal region of the X chromosome.
 
 import sys, os, subprocess, glob, linecache
 

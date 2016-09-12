@@ -19,7 +19,7 @@ print 'Working with this reference'
 print reference[0]
 
 #create output diretory
-if not os.path.exists('output'):
+if not os.path.ex ists('output'):
     os.makedirs('output')
 
 def new_fasta_generator(vcf, reference_seq):

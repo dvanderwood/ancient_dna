@@ -49,7 +49,7 @@ except OSError:
     pass
 
 f = open(path + '/all_homoplasy_stats.txt', 'w')
-f.write('Chromosome\tSample_Group\tAncient_R_Sites\tInformative_Sites\tTotal_Sites\n')
+f.write('Chromosome\tSample_Group\tAncient_R_Sites\tAncient_Polymorhpisms\tInformative_Sites\tTotal_Sites\n')
 f.close()
 
 
@@ -57,9 +57,9 @@ f.close()
 for chromosome in directories:
 	for sample_group in sub_directories:
 		sub_path = path + '/' + chromosome + '/combos/' + sample_group
-		if os.path.exists(sub_path + '/working/homoplasy_stats.txt'):
+		if os.path.exists(sub_path + '/filtered/homoplasy_stats.txt'):
 			print '\nLoading data for: ' + chromosome + ' and sample group: ' + sample_group + '\n'
-			sample_info = linecache.getline(sub_path + '/working/homoplasy_stats.txt',2)
+			sample_info = linecache.getline(sub_path + '/filtered/homoplasy_stats.txt',2)
 			sample_info_output = chromosome + '\t' + sample_group + '\t' + sample_info
 			with open(path + '/all_homoplasy_stats.txt', 'a') as output_file:
 				output_file.write(sample_info_output)
